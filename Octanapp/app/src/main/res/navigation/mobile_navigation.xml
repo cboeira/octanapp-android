@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_mapa">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.octanapp.ui.home.VeiculosFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_veiculos" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.octanapp.fragments.AlterarCadastroFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_alterar_cadastro" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.octanapp.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_tools"
+        android:name="com.example.octanapp.ui.tools.ToolsFragment"
+        android:label="@string/menu_tools"
+        tools:layout="@layout/fragment_tools" />
+
+    <fragment
+        android:id="@+id/nav_mapa"
+        android:name="com.example.octanapp.fragments.MapaFragment"
+        android:label="Mapa"
+        tools:layout="@layout/fragment_mapa" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.example.octanapp.ui.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.example.octanapp.fragments.FavoritosFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_favoritosxml" />
+</navigation>

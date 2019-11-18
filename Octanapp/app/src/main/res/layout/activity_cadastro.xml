@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CadastroActivity"
+    tools:ignore="Autofill">
+
+    <include
+    android:id="@+id/toolbar_cadastro"
+    layout="@layout/toolbar" />
+
+    <EditText
+        android:id="@+id/txt_cadastro_nome"
+        android:layout_width="366dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="89dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/cadastro_nome" />
+
+    <EditText
+        android:id="@+id/txt_cadastro_email"
+        android:layout_width="366dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="144dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email"/>
+
+    <EditText
+        android:id="@+id/txt_cadastro_senha"
+        android:layout_width="366dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="200dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/senha"/>
+
+    <EditText
+        android:id="@+id/txt_cadastro_confirmasenha"
+        android:layout_width="366dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="257dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/cadastro_confirmar"/>
+
+    <TextView
+        android:id="@+id/txt_cadastro_datanascimento"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="316dp"
+        android:hint="@string/cadastro_nascimento"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/spinner_genero"
+        android:layout_width="366dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="363dp"
+        android:popupElevation="30dp" />
+
+    <ImageButton
+        android:id="@+id/bt_cadastro_termos"
+        android:layout_width="159dp"
+        android:layout_height="28dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="425dp"
+        app:srcCompat="@drawable/bt_termos_de_uso"
+        android:contentDescription="@string/termos_de_uso"/>
+
+    <Switch
+        android:id="@+id/sw_termos_agreed"
+        android:layout_width="348dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="469dp"
+        android:text="@string/termos_agreed"/>
+
+    <ImageButton
+        android:id="@+id/bt_finaliza_cadastro"
+        android:layout_width="294dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="516dp"
+        app:srcCompat="@drawable/bt_cadastro_inscrever_se"
+        android:contentDescription="@string/inscrever"/>
+
+
+</RelativeLayout>

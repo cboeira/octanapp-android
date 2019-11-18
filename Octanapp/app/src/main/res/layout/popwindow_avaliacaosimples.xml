@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0">
+
+    <TextView
+        android:id="@+id/txtAvSimples"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="13dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:text="Avalie de 1 à 5 estrelas baseado no seu atendimento." />
+
+    <RatingBar
+        android:id="@+id/ratingBar_simples"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/bt_avaliacaoCompleta"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="154dp"
+        android:background="@color/azul1"
+        android:text="AVALIAÇÃO COMPLETA"
+        android:textColor="#fff"
+        android:textSize="16dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/txtEnviar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="217dp"
+        android:text="ENVIAR"
+        android:textColor="@color/azul1" />
+
+    <TextView
+        android:id="@+id/txtCancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="236dp"
+        android:layout_marginTop="218dp"
+        android:text="CANCELAR"
+        android:textColor="@color/azul1" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_avSimples"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="154dp" />
+
+
+</RelativeLayout>

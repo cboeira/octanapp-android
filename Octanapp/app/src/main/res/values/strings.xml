@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">octanapp</string>
+    <string name="email">E-MAIL</string>
+    <string name="senha">SENHA</string>
+    <string name="lembrar">LEMBRAR DE MIM</string>
+    <string name="entrar">ENTRAR</string>
+    <string name="inscrever">INSCREVER-SE</string>
+    <string name="redefinir">REDEFINIR SENHA</string>
+    <string name="logo">logo-octanapp</string>
+    <string name="login_google">google-login-button</string>
+    <string name="login_facebook">facebook-login-button</string>
+    <string name="termos_de_uso">termos-de-uso</string>
+    <string name="cadastro_nome">NOME COMPLETO</string>
+    <string name="cadastro_confirmar">CONFIRMAR SENHA</string>
+    <string name="cadastro_nascimento">DATA DE NASCIMENTO</string>
+    <string name="termos_agreed">Concordo com os Termos de Uso do Octanapp</string>
+    <string name="title_activity_mapa">Map</string>
+    <string name="cadastro_veiculo_marca">MARCA</string>
+    <string name="cadastro_veiculo_modelo">MODELO</string>
+    <string name="cadastro_veiculo_placa">PLACA (AAA0000)</string>
+    <string name="cadastro_veiculo_ano">ANO (AAAA)</string>
+    <string name="cadastro_veiculo_km">QUILOMETRAGEM TOTAL</string>
+    <string-array name="generos">
+        <item>GÊNERO</item>
+        <item>Masculino</item>
+        <item>Feminino</item>
+        <item>Outro</item>
+    </string-array>
+    <string name="title_activity_teste_drawer">TesteDrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="title_activity_menu_navegacao">MenuNavegacaoActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
