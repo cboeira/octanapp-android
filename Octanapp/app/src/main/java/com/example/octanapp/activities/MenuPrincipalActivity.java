@@ -1,6 +1,8 @@
 package com.example.octanapp.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -153,7 +155,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements Navigati
         }
     }
 
-    private void verificarVeiculoAtivo() {
+    public void verificarVeiculoAtivo() {
 
         stringRequest = new StringRequest(Request.Method.GET, urlVeiculoAtivo,
                 new Response.Listener<String>() {
@@ -217,5 +219,17 @@ public class MenuPrincipalActivity extends AppCompatActivity implements Navigati
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if ((requestCode == 10001) && (resultCode == 10001)) {
+
+            VeiculosFragment veiculosFragment = new VeiculosFragment();
+            veiculosFragment.setArguments(parametrosUsuario);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, veiculosFragment).commit();
+        }
     }
 }

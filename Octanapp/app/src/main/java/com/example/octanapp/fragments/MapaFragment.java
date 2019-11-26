@@ -32,6 +32,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.octanapp.R;
 import com.example.octanapp.activities.AlterarSenhaActivity;
+import com.example.octanapp.activities.EstabelecimentoActivity;
 import com.example.octanapp.activities.PostoActivity;
 import com.example.octanapp.model.Usuario;
 import com.google.android.gms.maps.CameraUpdate;
@@ -129,8 +130,8 @@ public class MapaFragment extends SupportMapFragment implements OnMapReadyCallba
                         String coordenadas[] = latlong.split(Pattern.quote(","));
                         String lat_i = coordenadas[0];
                         String long_i = coordenadas[1];
-                        int height = 100;
-                        int width = 100;
+                        int height = 75;
+                        int width = 75;
                         Marker marker;
                         if (bandeira.equals("Shell")) {
                             Bitmap b = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_shell_foreground);
@@ -219,8 +220,8 @@ public class MapaFragment extends SupportMapFragment implements OnMapReadyCallba
                         String coordenadas[] = latlong.split(Pattern.quote(","));
                         String lat_i = coordenadas[0];
                         String long_i = coordenadas[1];
-                        int height = 100;
-                        int width = 100;
+                        int height = 125;
+                        int width = 125;
                         Marker marker;
                         if (ramo.equals("Autocenter")) {
                             Bitmap b = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_autocenter_foreground);
@@ -313,11 +314,15 @@ public class MapaFragment extends SupportMapFragment implements OnMapReadyCallba
        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
            @Override
            public void onInfoWindowClick(Marker marker) {
-               Intent it = new Intent(getContext(), PostoActivity.class);
+
                String tag = (String) marker.getTag();
                if (tag.length() == 12) {
-                   Toast.makeText(getActivity(), "acessando estabelecimento.", Toast.LENGTH_SHORT).show();
+                   Intent it = new Intent(getContext(), EstabelecimentoActivity.class);
+                   it.putExtra("id_usuario", String.valueOf(usuario.getId()));
+                   it.putExtra("cnpj", (String) marker.getTag());
+                   startActivity(it);
                } else {
+                   Intent it = new Intent(getContext(), PostoActivity.class);
                    it.putExtra("id_usuario", String.valueOf(usuario.getId()));
                    it.putExtra("id_posto", (String) marker.getTag());
                    startActivity(it);

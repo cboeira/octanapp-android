@@ -40,7 +40,7 @@ public class RecyclerViewAutonomiaAdapter extends RecyclerView.Adapter<RecyclerV
         holder.tvNome.setText(mData.get(position).getNome());
         holder.tvAutonomiaAvaliacao.setText(String.valueOf(mData.get(position).getAutonomia())+
                 " km/L ("+String.valueOf(mData.get(position).getNumAvaliacoes()+" avaliações)"));
-        holder.tvPrecoKm.setText(String.valueOf(mData.get(position).getPrecoKm())+" R$/L");
+        holder.tvPrecoKm.setText("R$ "+String.valueOf(mData.get(position).getPrecoKm())+"/km");
     }
 
     @Override

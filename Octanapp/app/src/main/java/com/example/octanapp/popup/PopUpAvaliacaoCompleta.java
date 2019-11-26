@@ -1,6 +1,8 @@
 package com.example.octanapp.popup;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -24,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.octanapp.R;
+import com.example.octanapp.activities.PostoActivity;
 import com.example.octanapp.model.CombustivelPosto;
 
 import org.json.JSONArray;
@@ -46,6 +49,8 @@ public class PopUpAvaliacaoCompleta extends Activity implements Spinner.OnItemSe
 
     RatingBar ratingBar;
     ProgressBar progressBar;
+    AlertDialog dialog;
+    AlertDialog.Builder builder;
 
     //String urlAvaliaCompleta = "http://192.168.25.17/octanapp/realizaAvaliacaoCompleta.php";
     String urlAvaliaCompleta = "https://octanapp.herokuapp.com/realizaAvaliacaoCompleta.php";
@@ -79,7 +84,7 @@ public class PopUpAvaliacaoCompleta extends Activity implements Spinner.OnItemSe
         int height = dm.heightPixels;
 
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        getWindow().setLayout((int)(width*.8),(int)(height*.5));
+        getWindow().setLayout((int)(width*.9),(int)(height*.55));
 
         progressBar = findViewById(R.id.progressBar_avCompleta);
         progressBar.setVisibility(View.GONE);
@@ -97,7 +102,12 @@ public class PopUpAvaliacaoCompleta extends Activity implements Spinner.OnItemSe
         txtCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setResult(10);
                 finish();
+                /*Intent it = new Intent(PopUpAvaliacaoCompleta.this, PostoActivity.class);
+                it.putExtra("id_usuario", id_usuario);
+                it.putExtra("id_posto", id_posto);
+                startActivity(it);*/
             }
         });
 
@@ -121,7 +131,7 @@ public class PopUpAvaliacaoCompleta extends Activity implements Spinner.OnItemSe
                     litragem.setError("Favor informar a litragem.");
                     litragem.requestFocus();
                     validado = false;
-                } else if (Integer.parseInt(litragem.getText().toString()) > 60) {
+                } else if (Double.parseDouble(litragem.getText().toString().replace(",",".")) > 60) {
                     litragem.setError("Litragem muito alta.");
                     litragem.requestFocus();
                     validado = false;
@@ -200,8 +210,21 @@ public class PopUpAvaliacaoCompleta extends Activity implements Spinner.OnItemSe
                             if (erro) {
                                 Toast.makeText(getApplicationContext(), mensagem, Toast.LENGTH_LONG).show();
                             } else {
-                                Toast.makeText(getApplicationContext(), mensagem, Toast.LENGTH_LONG).show();
-                                finish();
+                                builder = new AlertDialog.Builder(PopUpAvaliacaoCompleta.this);
+                                builder.setTitle("Avaliação realizada com sucesso!");
+                                builder.setPositiveButton("VOLTAR", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        setResult(2);
+                                        finish();
+                                        Intent it = new Intent(PopUpAvaliacaoCompleta.this, PostoActivity.class);
+                                        it.putExtra("id_usuario", id_usuario);
+                                        it.putExtra("id_posto", id_posto);
+                                        startActivity(it);
+                                    }
+                                });
+                                dialog = builder.create();
+                                dialog.show();
                             }
                         } catch (Exception e) {
                             Log.v("LogLogin", e.getMessage());
@@ -222,7 +245,7 @@ public class PopUpAvaliacaoCompleta extends Activity implements Spinner.OnItemSe
                 params.put("id_usuario", id_usuario);
                 params.put("nota", String.valueOf(ratingBar.getRating()));
                 params.put("nome_combustivel", spinner.getSelectedItem().toString());
-                params.put("litragem", litragem.getText().toString());
+                params.put("litragem", litragem.getText().toString().replace(",", "."));
                 params.put("kmTotal", kmtotal.getText().toString());
                 System.out.println(params);
                 return params;

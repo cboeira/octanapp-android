@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.octanapp">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -17,8 +18,20 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_octanapp_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activities.MenuPrincipalActivity"></activity>
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activities.EstabelecimentoActivity"
+            android:parentActivityName=".activities.LoginActivity" />
+        <activity
+            android:name=".activities.HistoricoActivity"
+            android:parentActivityName=".activities.LoginActivity" />
+        <activity android:name=".activities.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.MenuPrincipalActivity" />
         <activity
             android:name=".activities.VeiculoActivity"
             android:parentActivityName=".activities.LoginActivity" />
@@ -59,18 +72,15 @@
         <activity
             android:name=".activities.AlterarCadastroActivity"
             android:parentActivityName=".activities.LoginActivity" />
-        <activity android:name=".activities.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activities.LoginActivity" />
         <activity
             android:name=".popup.PopUpTermos"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".popup.PopUpAvaliacaoSimples"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".popup.PopUpAvaliacaoEstab"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".popup.PopUpAvaliacaoCompleta"

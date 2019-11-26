@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,46 +11,200 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:id="@+id/informacoes_razaoSocial"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="7dp"
+            android:textColor="@color/azul1"
+            android:text="Endereço"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+
+            android:id="@+id/informacoes_endereco"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="7dp"
+            android:text="Telefone"
+            android:textColor="@color/azul1"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/informacoes_telefone"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="7dp"
+            android:text="Ramo"
+            android:textColor="@color/azul1"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/informacoes_ramo"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="7dp"
+            android:text="Informações"
+            android:textColor="@color/azul1"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/informacoes_informacoes"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="7dp"
+            android:text="Bandeira"
+            android:textSize="14sp"
+            android:textColor="@color/azul1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/informacoes_bandeira"/>
+    </RelativeLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/informacoes_razaoSocial"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="7dp"
+        android:text="Formas de Pagamento"
+        android:textSize="14sp"
+        android:textColor="@color/azul1"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/informacoes_endereco"/>
+        <ImageView
+            android:id="@+id/forma_debito"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_debito_foreground"/>
+        <ImageView
+            android:id="@+id/forma_dinheiro"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_dinheiro_foreground" />
+        <ImageView
+            android:id="@+id/forma_credito"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_credito_foreground" />
+        <ImageView
+            android:id="@+id/forma_cheque"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_cheque_foreground" />
+        <ImageView
+            android:id="@+id/forma_semparar"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_semparar_foreground" />
+        <ImageView
+            android:id="@+id/forma_ticketcar"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_ticketcar_foreground" />
+        <ImageView
+            android:id="@+id/forma_abasteceai"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_abasteceai_foreground" />
+        <ImageView
+            android:id="@+id/forma_aleloauto"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            app:srcCompat="@mipmap/ic_aleloauto_foreground"
+            android:visibility="gone"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/informacoes_telefone"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/informacoes_ramo"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/informacoes_informacoes"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/informacoes_bandeira"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:id="@+id/informacoes_forma_pagamento"/>
-
+    </LinearLayout>
 </LinearLayout>

@@ -4,12 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.octanapp.model.Posto;
+import com.example.octanapp.popup.PopUpAvaliacaoCompleta;
 import com.example.octanapp.popup.PopUpAvaliacaoSimples;
 import com.example.octanapp.R;
 import com.example.octanapp.adapters.ViewPagerAdapter;
@@ -54,10 +60,15 @@ public class PostoActivity extends AppCompatActivity {
     String id_usuario;
     String id_posto;
     Posto posto = new Posto();
-    ProgressBar progressBar;
     Toolbar toolbar;
     String coordenadas;
     boolean favorito;
+    Bundle parametros;
+    ProgressDialog progressDialog;
+    ImageView imagem_toolbar;
+    TextView txt_posto_toolbar;
+    TextView txt_avaliacoes_toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +79,6 @@ public class PostoActivity extends AppCompatActivity {
         id_usuario = intentRecebedora.getStringExtra("id_usuario");
         id_posto = intentRecebedora.getStringExtra("id_posto");
 
-        progressBar = findViewById(R.id.progressBar_Posto);
         requestQueue = Volley.newRequestQueue(this);
 
         //urlInicioPosto = "http://192.168.25.17/octanapp/retornaInicioPosto.php?id_posto="+id_posto+"&id_usuario="+id_usuario;
@@ -87,7 +97,12 @@ public class PostoActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle("");
 
+        imagem_toolbar = findViewById(R.id.toolbar_imagem_posto);
+        txt_avaliacoes_toolbar = findViewById(R.id.toolbar_txt_avaliacoes);
+        txt_posto_toolbar = findViewById(R.id.toolbar_txt_posto);
+
         txtSalvo = findViewById(R.id.posto_salvar);
+        progressDialog = new ProgressDialog(PostoActivity.this);
 
         iniciarPosto();
 
@@ -95,7 +110,7 @@ public class PostoActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewpager_id);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), 3);
 
-        final Bundle parametros = new Bundle();
+        parametros = new Bundle();
         parametros.putString("id_posto", id_posto);
         parametros.putString("id_usuario", id_usuario);
 
@@ -119,7 +134,6 @@ public class PostoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String strUri = "https://www.google.com/maps/dir//"+coordenadas+"/";
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(strUri));
-
                 startActivity(intent);
             }
         });
@@ -130,7 +144,7 @@ public class PostoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent it = new Intent(PostoActivity.this, PopUpAvaliacaoSimples.class);
                 it.putExtras(parametros);
-                startActivity(it);
+                startActivityForResult(it, 2);
             }
         });
 
@@ -144,11 +158,15 @@ public class PostoActivity extends AppCompatActivity {
                     //Toast.makeText(getApplicationContext(), "Posto salvo nos favoritos.", Toast.LENGTH_SHORT).show();
                     favoritarPosto();
                     txtSalvo.setText("SALVO");
+                    txtSalvo.setTextColor(Color.parseColor("#2599D1"));
+                    btSalvar.setImageResource(R.drawable.ic_favorite);
                     favorito = true;
                 } else {
                    // Toast.makeText(getApplicationContext(), "Posto removido dos favoritos.", Toast.LENGTH_SHORT).show();
                     desfavoritarPosto();
                     txtSalvo.setText("SALVAR");
+                    txtSalvo.setTextColor(Color.parseColor("#777777"));
+                    btSalvar.setImageResource(R.drawable.ic_favorite_grey);
                     favorito = false;
                 }
             }
@@ -173,8 +191,23 @@ public class PostoActivity extends AppCompatActivity {
                             favorito = jsonObject.getBoolean("favorito");
                             if (favorito) {
                                 txtSalvo.setText("SALVO");
+                                txtSalvo.setTextColor(Color.parseColor("#2599D1"));
+                                btSalvar.setImageResource(R.drawable.ic_favorite);
                             } else {
                                 txtSalvo.setText("SALVAR");
+                                txtSalvo.setTextColor(Color.parseColor("#777777"));
+                                btSalvar.setImageResource(R.drawable.ic_favorite_grey);
+                            }
+                            String bandeira;
+                            bandeira = posto.getBandeira();
+                            if (bandeira.equals("Petrobras")) {
+                                imagem_toolbar.setImageResource(R.mipmap.ic_petrobras_foreground);
+                            } else if (bandeira.equals("Ipiranga")) {
+                                imagem_toolbar.setImageResource(R.mipmap.ic_ipiranga_foreground);
+                            } else if (bandeira.equals("Shell")) {
+                                imagem_toolbar.setImageResource(R.mipmap.ic_shell_foreground);
+                            } else {
+                                imagem_toolbar.setImageResource(R.mipmap.ic_posto_foreground);
                             }
                             String nota;
                             if (posto.getNotaMedia() == 0) {
@@ -184,11 +217,13 @@ public class PostoActivity extends AppCompatActivity {
                             }
                             String titulo = posto.getNomeFantasia()+" ("+nota+")";
                             toolbar.setTitle(titulo);
+                            txt_posto_toolbar.setText(titulo);
                             String numAv = String.valueOf(posto.getNumAvaliacoes());
                             String subTitulo = numAv+" avaliações";
                             toolbar.setSubtitle(subTitulo);
+                            txt_avaliacoes_toolbar.setText(subTitulo);
                             Log.v("LogLogin", response);
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                         } catch (Exception e) {
                             Log.v("LogLogin", e.getMessage());
                         }
@@ -197,7 +232,7 @@ public class PostoActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse (VolleyError error) {
-                        progressBar.setVisibility(View.GONE);
+                        progressDialog.dismiss();
                         Log.e("LogLogin", error.getMessage());
 
                     }
@@ -208,7 +243,8 @@ public class PostoActivity extends AppCompatActivity {
                 return params;
             }
         };
-        progressBar.setVisibility(View.VISIBLE);
+        progressDialog.setMessage("Recebendo informações do posto...");
+        progressDialog.show();
         requestQueue.add(stringRequest);
     }
 
@@ -276,5 +312,18 @@ public class PostoActivity extends AppCompatActivity {
             }
         };
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode==2 && resultCode ==2) {
+            finish();
+        }
+        if (requestCode==2 && resultCode ==3) {
+            Intent it = new Intent(PostoActivity.this, PopUpAvaliacaoCompleta.class );
+            it.putExtras(parametros);
+            startActivityForResult(it, 2);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

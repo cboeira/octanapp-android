@@ -65,7 +65,7 @@ public class AlterarSenhaActivity extends AppCompatActivity {
         btAlteraSenha = findViewById(R.id.bt_alterar_senha);
 
         Toolbar toolbar = findViewById(R.id.toolbar_alterar_senha);
-        toolbar.setTitle("ALTERAR SENHA");
+        toolbar.setTitle("Alterar senha");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);

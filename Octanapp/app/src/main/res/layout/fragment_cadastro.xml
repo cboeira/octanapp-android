@@ -11,7 +11,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="67dp"
+        android:layout_marginTop="17dp"
         android:text="Nome" />
 
     <EditText
@@ -21,7 +21,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="91dp"
+        android:layout_marginTop="41dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -32,7 +32,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="138dp"
+        android:layout_marginTop="88dp"
         android:text="E-mail" />
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="214dp"
+        android:layout_marginTop="164dp"
         android:text="Data de Nascimento" />
 
     <TextView
@@ -52,7 +52,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="296dp"
+        android:layout_marginTop="246dp"
         android:text="Gênero" />
 
     <EditText
@@ -63,7 +63,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="161dp"
+        android:layout_marginTop="111dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -74,7 +74,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="243dp"
+        android:layout_marginTop="193dp"
         android:hint="@string/cadastro_nascimento"
         android:textSize="18sp" />
 
@@ -86,7 +86,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="319dp"
+        android:layout_marginTop="269dp"
         android:popupElevation="30dp" />
 
     <Button
@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="393dp"
+        android:layout_marginTop="343dp"
         android:background="@color/azul1"
         android:text="ATUALIZAR DADOS"
         android:textColor="#FFFFFF" />
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="454dp"
+        android:layout_marginTop="404dp"
         android:background="@color/azul1"
         android:text="ALTERAR SENHA"
         android:textColor="#FFFFFF" />

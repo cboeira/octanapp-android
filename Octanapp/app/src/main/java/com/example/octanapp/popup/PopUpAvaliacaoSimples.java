@@ -1,6 +1,9 @@
 package com.example.octanapp.popup;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -21,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.octanapp.R;
+import com.example.octanapp.activities.PostoActivity;
 
 import org.json.JSONObject;
 
@@ -34,6 +38,8 @@ public class PopUpAvaliacaoSimples extends Activity {
 
     RatingBar ratingBar;
     ProgressBar progressBar;
+    AlertDialog dialog;
+    AlertDialog.Builder builder;
 
     //String urlAvaliaSimples = "http://192.168.25.17/octanapp/realizaAvaliacaoSimples.php";
     String urlAvaliaSimples = "https://octanapp.herokuapp.com/realizaAvaliacaoSimples.php";
@@ -60,6 +66,7 @@ public class PopUpAvaliacaoSimples extends Activity {
 
         setContentView(R.layout.popwindow_avaliacaosimples);
 
+
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
@@ -67,7 +74,8 @@ public class PopUpAvaliacaoSimples extends Activity {
         int height = dm.heightPixels;
 
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        getWindow().setLayout((int)(width*.8),(int)(height*.4));
+        getWindow().setLayout((int)(width*.9),(int)(height*.4));
+
 
         progressBar = findViewById(R.id.progressBar_avSimples);
         progressBar.setVisibility(View.GONE);
@@ -95,7 +103,12 @@ public class PopUpAvaliacaoSimples extends Activity {
         txtCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setResult(10);
                 finish();
+       /*         Intent it = new Intent(PopUpAvaliacaoSimples.this, PostoActivity.class);
+                it.putExtra("id_usuario", id_usuario);
+                it.putExtra("id_posto", id_posto);
+                startActivity(it);*/
             }
         });
 
@@ -103,10 +116,12 @@ public class PopUpAvaliacaoSimples extends Activity {
         btAvaliacaoCompleta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(PopUpAvaliacaoSimples.this, PopUpAvaliacaoCompleta.class );
-                it.putExtras(parametros);
-                startActivity(it);
+                //Intent it = new Intent(PopUpAvaliacaoSimples.this, PopUpAvaliacaoCompleta.class );
+                //it.putExtras(parametros);
+                setResult(3);
                 finish();
+                //startActivity(it);
+
             }
         });
     }
@@ -120,8 +135,21 @@ public class PopUpAvaliacaoSimples extends Activity {
                             String mensagem = jsonObject.getString("mensagem");
                             Log.v("LogLogin", response);
                             progressBar.setVisibility(View.GONE);
-                            Toast.makeText(getApplicationContext(), mensagem, Toast.LENGTH_SHORT).show();
-                            finish();
+                            builder = new AlertDialog.Builder(PopUpAvaliacaoSimples.this);
+                            builder.setTitle("Avaliação realizada com sucesso!");
+                            builder.setPositiveButton("VOLTAR", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    setResult(2);
+                                    finish();
+                                    Intent it = new Intent(PopUpAvaliacaoSimples.this, PostoActivity.class);
+                                    it.putExtra("id_usuario", id_usuario);
+                                    it.putExtra("id_posto", id_posto);
+                                    startActivity(it);
+                                }
+                            });
+                            dialog = builder.create();
+                            dialog.show();
                         } catch (Exception e) {
                             Log.v("LogLogin", e.getMessage());
                         }
@@ -147,4 +175,6 @@ public class PopUpAvaliacaoSimples extends Activity {
         requestQueue.add(stringRequest);
 
     }
+
+
 }

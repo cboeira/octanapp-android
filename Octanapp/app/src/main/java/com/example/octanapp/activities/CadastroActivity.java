@@ -7,12 +7,14 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -32,9 +34,14 @@ import com.example.octanapp.R;
 
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -57,8 +64,8 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
     EditText txtSenha;
     EditText txtConfirmaSenha;
     TextView txtDataNascimento;
-    ImageButton btTermosDeUso;
-    ImageButton btFinalizaCadastro;
+    Button btTermosDeUso;
+    Button btFinalizaCadastro;
     Switch swTermos;
     Spinner spinner;
 
@@ -70,7 +77,7 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
         requestQueue = Volley.newRequestQueue(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar_cadastro);
-        toolbar.setTitle("CADASTRO");
+        toolbar.setTitle("Cadastro");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -133,7 +140,9 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
         btTermosDeUso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CadastroActivity.this, PopUpTermos.class ));
+                String strUri = "https://octanapp.herokuapp.com/termosdeuso.html";
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(strUri));
+                startActivity(intent);
             }
         });
 

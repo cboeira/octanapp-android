@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -51,7 +52,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity implements Spinne
     EditText txtPlaca;
     EditText txtAno;
     EditText txtKm;
-    ImageButton btConfirmaCadastro;
+    Button btConfirmaCadastro;
     Usuario usuario;
     Bundle parametrosUsuario;
 
@@ -109,7 +110,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity implements Spinne
         getDataMarcas();
 
         Toolbar toolbar = findViewById(R.id.toolbar_cadastro_veiculo);
-        toolbar.setTitle("CADASTRAR VEÍCULO");
+        toolbar.setTitle("Cadastrar veículo");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

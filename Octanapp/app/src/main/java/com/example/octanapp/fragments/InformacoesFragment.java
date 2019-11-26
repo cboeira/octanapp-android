@@ -2,9 +2,12 @@ package com.example.octanapp.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -22,6 +25,8 @@ import com.example.octanapp.R;
 
 import org.json.JSONObject;
 
+import java.util.regex.Pattern;
+
 public class InformacoesFragment extends Fragment {
     View view;
 
@@ -32,6 +37,7 @@ public class InformacoesFragment extends Fragment {
     TextView txtInformacoes;
     TextView txtBandeira;
     TextView txtFormaPagamento;
+    ImageView debito, dinheiro, credito, cheque, aleloauto, ticketcar, semparar, abasteceai;
 
     String urlInformacoesPosto;
 
@@ -76,14 +82,50 @@ public class InformacoesFragment extends Fragment {
                             txtRamo = view.findViewById(R.id.informacoes_ramo);
                             txtInformacoes = view.findViewById(R.id.informacoes_informacoes);
                             txtBandeira = view.findViewById(R.id.informacoes_bandeira);
-                            txtFormaPagamento = view.findViewById(R.id.informacoes_forma_pagamento);
+                            //txtFormaPagamento = view.findViewById(R.id.informacoes_forma_pagamento);
                             txtRazao.setText(jsonObject.getString("razaoSocial"));
-                            txtEndereco.setText("Endereço: "+jsonObject.getString("endereco"));
-                            txtTelefone.setText("Telefone: "+jsonObject.getString("telefone"));
-                            txtRamo.setText("Ramo: "+jsonObject.getString("ramo"));
-                            txtInformacoes.setText("Informações: "+jsonObject.getString("informacoes"));
-                            txtBandeira.setText("Bandeira: "+jsonObject.getString("bandeira"));
-                            txtFormaPagamento.setText("Formas de Pagamento: "+jsonObject.getString("formaPagamento"));
+                            txtEndereco.setText(jsonObject.getString("endereco"));
+                            txtTelefone.setText(jsonObject.getString("telefone"));
+                            txtRamo.setText(jsonObject.getString("ramo"));
+                            txtInformacoes.setText(jsonObject.getString("informacoes"));
+                            txtBandeira.setText(jsonObject.getString("bandeira"));
+                            String formasPagamento = jsonObject.getString("formaPagamento");
+                            String formas[] = formasPagamento.split(Pattern.quote(","));
+                            for (String dados : formas) {
+                                if (dados.equals("debito")) {
+                                    debito = view.findViewById(R.id.forma_debito);
+                                    debito.setVisibility(View.VISIBLE);
+                                }
+                                if (dados.equals("dinheiro")) {
+                                    dinheiro = view.findViewById(R.id.forma_dinheiro);
+                                    dinheiro.setVisibility(View.VISIBLE);
+                                }
+                                if (dados.equals("credito")) {
+                                    credito = view.findViewById(R.id.forma_credito);
+                                    credito.setVisibility(View.VISIBLE);
+                                }
+                                if (dados.equals("cheque")) {
+                                    cheque = view.findViewById(R.id.forma_cheque);
+                                    cheque.setVisibility(View.VISIBLE);
+                                }
+                                if (dados.equals("semparar")) {
+                                    semparar = view.findViewById(R.id.forma_semparar);
+                                    semparar.setVisibility(View.VISIBLE);
+                                }
+                                if (dados.equals("ticketcar")) {
+                                    ticketcar = view.findViewById(R.id.forma_ticketcar);
+                                    ticketcar.setVisibility(View.VISIBLE);
+                                }
+                                if (dados.equals("abasteceai")) {
+                                    abasteceai = view.findViewById(R.id.forma_abasteceai);
+                                    abasteceai.setVisibility(View.VISIBLE);
+                                }
+                                if (dados.equals("aleloauto")) {
+                                    aleloauto = view.findViewById(R.id.forma_aleloauto);
+                                    aleloauto.setVisibility(View.VISIBLE);
+                                }
+                            }
+                            //txtFormaPagamento.setText(aux);
                             Log.v("LogLogin", response);
                             progressBar.setVisibility(View.GONE);
                         } catch (Exception e) {

@@ -1,5 +1,6 @@
 package com.example.octanapp.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +27,7 @@ import com.example.octanapp.R;
 import com.example.octanapp.activities.AlterarVeiculoActivity;
 import com.example.octanapp.activities.CadastroVeiculoActivity;
 import com.example.octanapp.activities.MenuActivity;
+import com.example.octanapp.activities.MenuPrincipalActivity;
 import com.example.octanapp.adapters.RecyclerViewAutonomiaAdapter;
 import com.example.octanapp.adapters.RecyclerViewVeiculoEmplacadoAdapter;
 import com.example.octanapp.model.AutonomiaPosto;
@@ -46,6 +49,7 @@ public class VeiculosFragment extends Fragment {
     Usuario usuario;
     String urlRetornaVeiculosEmplacados;
     Bundle parametrosUsuario;
+    FragmentTransaction ft;
 
     private JsonArrayRequest request;
     private List<VeiculoEmplacado> listaVeiculoEmplacado;
@@ -65,6 +69,9 @@ public class VeiculosFragment extends Fragment {
         requestQueue = Volley.newRequestQueue(getContext());
         parametrosUsuario = new Bundle();
         usuario = new Usuario();
+
+        ((MenuPrincipalActivity)getActivity()).verificarVeiculoAtivo();
+
 
         if (getArguments() != null) {
             usuario.setId(getArguments().getLong("id_usuario"));
@@ -156,6 +163,15 @@ public class VeiculosFragment extends Fragment {
             startActivity(it);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if ((requestCode == 10001) && (resultCode == Activity.RESULT_OK))
+            // recreate your fragment here
+            ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
     }
 
 }

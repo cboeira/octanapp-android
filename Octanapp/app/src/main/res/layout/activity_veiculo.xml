@@ -1,88 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.VeiculoActivity">
+    tools:context=".activities.VeiculoActivity"
+    android:orientation="vertical">
 
     <include
         android:id="@+id/toolbar_veiculo"
         layout="@layout/toolbar" />
 
+    <ImageView
+        android:id="@+id/veiculo_logo_marca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_chevrolet_foreground" />
+
     <TextView
         android:id="@+id/txt_marca_veiculo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:layout_gravity="center"
         android:text="Marca" />
 
     <TextView
         android:id="@+id/txt_modelo_veiculo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="111dp"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_gravity="center"
         android:text="Modelo" />
 
     <TextView
         android:id="@+id/txt_ano_veiculo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="137dp"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:layout_gravity="center"
         android:text="Ano" />
 
     <TextView
         android:id="@+id/txt_km_veiculo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="161dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:textSize="20sp"
         android:text="Km Total" />
 
     <TextView
         android:id="@+id/txt_placa_veiculo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="186dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:textSize="20sp"
         android:text="Placa" />
 
     <Button
         android:id="@+id/bt_ativar"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="15dp"
         android:background="@color/azul1"
-        android:text="ATIVAR"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:text="ATIVAR VEÍCULO"
         android:textColor="#ffffff" />
 
     <Button
-        android:id="@+id/bt_remover_veiculo"
-        android:layout_width="150dp"
+        android:id="@+id/bt_historico"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="272dp"
-        android:background="@color/azul2"
-        android:text="REMOVER VEÍCULO"
+        android:layout_marginTop="15dp"
+        android:background="@color/azul1"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:text="HISTÓRICO"
         android:textColor="#ffffff" />
 
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp">
+
+        <Button
+            android:id="@+id/bt_remover_veiculo"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/azul2"
+            android:layout_centerHorizontal="true"
+            android:text="REMOVER VEÍCULO"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:textSize="20sp"
+            android:textColor="#ffffff" />
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

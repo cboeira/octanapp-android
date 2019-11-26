@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="240dp"
+    android:layout_marginTop="5dp"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:id="@+id/container">
+
+    <TextView
+        android:id="@+id/historico_nomePosto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Nome Posto"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/historico_bandeira"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Bandeira"
+     android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/historico_horario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Horario"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight=".333333333">
+
+            <TextView
+                android:id="@+id/txtLitragem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LITRAGEM"
+                android:textColor="@color/azul1" />
+            <TextView
+                android:id="@+id/historico_litragem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/azul1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight=".333333333">
+            <TextView
+                android:id="@+id/txtKmTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KM TOTAL"
+                android:textColor="@color/azul1" />
+            <TextView
+                android:id="@+id/historico_kmtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/azul1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight=".333333333">
+
+            <TextView
+                android:id="@+id/txtAutonomia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AUTONOMIA"
+                android:textColor="@color/azul1" />
+            <TextView
+                android:id="@+id/historico_autonomia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/azul1" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/historico_combustivel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Combustível"
+        android:textSize="16sp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar_historico"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:isIndicator="true"/>
+
+</LinearLayout>

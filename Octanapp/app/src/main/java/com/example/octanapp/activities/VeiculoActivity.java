@@ -5,10 +5,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,8 +36,10 @@ public class VeiculoActivity extends AppCompatActivity {
     TextView txtPlaca;
     TextView txtAno;
     TextView txtKmTotal;
+    ImageView imgMarca;
     Button btAtivar;
     Button btRemover;
+    Button btHistorico;
     //String urlAtivaVeiculo = "http://192.168.25.17/octanapp/ativaVeiculo.php";
     String urlAtivaVeiculo = "https://octanapp.herokuapp.com/ativaVeiculo.php";
     //String urlRemoveVeiculo = "http://192.168.25.17/octanapp/removeVeiculo.php";
@@ -72,6 +76,7 @@ public class VeiculoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        imgMarca = findViewById(R.id.veiculo_logo_marca);
         txtMarca = findViewById(R.id.txt_marca_veiculo);
         txtModelo = findViewById(R.id.txt_modelo_veiculo);
         txtPlaca = findViewById(R.id.txt_placa_veiculo);
@@ -80,6 +85,36 @@ public class VeiculoActivity extends AppCompatActivity {
         btAtivar = findViewById(R.id.bt_ativar);
 
         String stringKmTotal = String.valueOf(veiculoEmplacado.getKmTotal())+" Km rodados";
+        String marca = veiculoEmplacado.getMarca();
+        if (marca.equals("AUDI")) {
+            imgMarca.setImageResource(R.mipmap.ic_audi_foreground);
+        } else if (marca.equals("BMW")) {
+            imgMarca.setImageResource(R.mipmap.ic_bmw_foreground);
+        } else if (marca.equals("CITROEN")) {
+            imgMarca.setImageResource(R.mipmap.ic_citroen_foreground);
+        } else if (marca.equals("FIAT")) {
+            imgMarca.setImageResource(R.mipmap.ic_fiat_foreground);
+        } else if (marca.equals("FORD")) {
+            imgMarca.setImageResource(R.mipmap.ic_ford_foreground);
+        } else if (marca.equals("CHEVROLET")) {
+            imgMarca.setImageResource(R.mipmap.ic_chevrolet_foreground);
+        } else if (marca.equals("HONDA")) {
+            imgMarca.setImageResource(R.mipmap.ic_honda_foreground);
+        } else if (marca.equals("HYUNDAI")) {
+            imgMarca.setImageResource(R.mipmap.ic_hyundai_foreground);
+        } else if (marca.equals("MERCEDES-BENZ")) {
+            imgMarca.setImageResource(R.mipmap.ic_mercedes_foreground);
+        } else if (marca.equals("NISSAN")) {
+            imgMarca.setImageResource(R.mipmap.ic_nissan_foreground);
+        } else if (marca.equals("PEUGEOT")) {
+            imgMarca.setImageResource(R.mipmap.ic_peugeot_foreground);
+        } else if (marca.equals("RENAULT")) {
+            imgMarca.setImageResource(R.mipmap.ic_renault_foreground);
+        } else if (marca.equals("TOYOTA")) {
+            imgMarca.setImageResource(R.mipmap.ic_toyota_foreground);
+        } else if (marca.equals("VOLKSWAGEN")) {
+            imgMarca.setImageResource(R.mipmap.ic_volkswagen_foreground);
+        }
 
         txtMarca.setText(veiculoEmplacado.getMarca());
         txtModelo.setText(veiculoEmplacado.getModelo());
@@ -98,6 +133,16 @@ public class VeiculoActivity extends AppCompatActivity {
                 }
             });
         }
+
+        btHistorico = findViewById(R.id.bt_historico);
+        btHistorico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(VeiculoActivity.this, HistoricoActivity.class);
+                it.putExtra("placa", veiculoEmplacado.getPlaca());
+                startActivity(it);
+            }
+        });
 
         btRemover = findViewById(R.id.bt_remover_veiculo);
         btRemover.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +173,8 @@ public class VeiculoActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     private void ativarVeiculo() {
@@ -140,6 +187,7 @@ public class VeiculoActivity extends AppCompatActivity {
                             String mensagem = jsonObject.getString("mensagem");
                             Log.v("LogLogin", response);
                             Toast.makeText(getApplicationContext(), mensagem, Toast.LENGTH_LONG).show();
+                            setResult(10001);
                             finish();
                         } catch (Exception e) {
                             Log.v("LogLogin", e.getMessage());
@@ -173,6 +221,7 @@ public class VeiculoActivity extends AppCompatActivity {
                             String mensagem = jsonObject.getString("mensagem");
                             Log.v("LogLogin", response);
                             Toast.makeText(getApplicationContext(), mensagem, Toast.LENGTH_LONG).show();
+                            setResult(10001);
                             finish();
                         } catch (Exception e) {
                             Log.v("LogLogin", e.getMessage());
@@ -195,4 +244,6 @@ public class VeiculoActivity extends AppCompatActivity {
         };
         requestQueue.add(stringRequest);
     }
+
+
 }
